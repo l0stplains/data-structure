@@ -1,8 +1,17 @@
 #include <iostream>
 #include <stdexcept>
 
-#include "Node.h"
 #include "Stack.h"
+
+StackNode::StackNode() {
+  data = 0;
+  before = nullptr;
+}
+
+StackNode::StackNode(int newData) {
+  data = newData;
+  before = nullptr;
+}
 
 /**
  * Stack constructor.
@@ -18,7 +27,7 @@ Stack::Stack() { head = nullptr; }
  * @param data Data of the new pushed node.
  */
 void Stack::push(int data) {
-  Node *newNode = new Node(data);
+  StackNode *newNode = new StackNode(data);
 
   if (newNode == nullptr) {
     throw std::runtime_error("[ERROR] Memory is full!");
@@ -29,7 +38,7 @@ void Stack::push(int data) {
     return;
   }
 
-  newNode->next = head;
+  newNode->before = head;
 
   head = newNode;
 
@@ -47,9 +56,9 @@ void Stack::pop() {
     throw std::logic_error("[ERROR] Stack is empty!");
   }
 
-  Node *tempNode = head;
+  StackNode *tempNode = head;
 
-  head = head->next;
+  head = head->before;
 
   delete tempNode;
 
@@ -63,11 +72,11 @@ void Stack::pop() {
  */
 void Stack::print() {
 
-  Node *currentNode = head;
+  StackNode *currentNode = head;
 
   while (currentNode != nullptr) {
     std::cout << currentNode->data << " ";
-    currentNode = currentNode->next;
+    currentNode = currentNode->before;
   }
 
   std::cout << std::endl;
@@ -86,11 +95,11 @@ Stack::~Stack() {
     return;
   }
 
-  Node *currentNode = head;
+  StackNode *currentNode = head;
 
   while (currentNode != nullptr) {
-    Node *temp = currentNode;
-    currentNode = currentNode->next;
+    StackNode *temp = currentNode;
+    currentNode = currentNode->before;
     delete temp;
   }
 

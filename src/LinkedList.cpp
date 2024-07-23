@@ -1,7 +1,16 @@
 #include "LinkedList.h"
-#include "Node.h"
 #include <iostream>
 #include <stdexcept>
+
+LinkedListNode::LinkedListNode() {
+  data = 0;
+  next = nullptr;
+}
+
+LinkedListNode::LinkedListNode(int newData) {
+  data = newData;
+  next = nullptr;
+}
 
 /**
  * Linked List constructor.
@@ -18,7 +27,7 @@ LinkedList::LinkedList() { head = nullptr; };
  */
 void LinkedList::append(int data) {
 
-  Node *newNode = new Node(data);
+  LinkedListNode *newNode = new LinkedListNode(data);
 
   if (head == nullptr) {
     head = newNode;
@@ -26,7 +35,7 @@ void LinkedList::append(int data) {
     return;
   }
 
-  Node *currentNode = head;
+  LinkedListNode *currentNode = head;
   while (currentNode->next != nullptr) {
     currentNode = currentNode->next;
   }
@@ -42,7 +51,7 @@ void LinkedList::append(int data) {
  * Prints every node on the list with space as separator.
  */
 void LinkedList::print() {
-  Node *currentNode = head;
+  LinkedListNode *currentNode = head;
 
   while (currentNode != nullptr) {
     std::cout << currentNode->data << " ";
@@ -67,7 +76,7 @@ void LinkedList::deleteAt(int index) {
   }
 
   if (index == 0) {
-    Node *temp = head;
+    LinkedListNode *temp = head;
     head = head->next;
     delete temp;
     return;
@@ -75,8 +84,8 @@ void LinkedList::deleteAt(int index) {
 
   int currentIndex = 0;
 
-  Node *currentNode = head;
-  Node *beforeNode = nullptr;
+  LinkedListNode *currentNode = head;
+  LinkedListNode *beforeNode = nullptr;
 
   while (currentNode != nullptr) {
 
@@ -104,7 +113,7 @@ void LinkedList::deleteAt(int index) {
  */
 void LinkedList::insertAt(int index, int data) {
 
-  Node *newNode = new Node(data);
+  LinkedListNode *newNode = new LinkedListNode(data);
 
   if (index == 0) {
     newNode->next = head;
@@ -114,7 +123,7 @@ void LinkedList::insertAt(int index, int data) {
 
   int currentIndex = 0;
 
-  Node *currentNode = head;
+  LinkedListNode *currentNode = head;
 
   while (currentNode != nullptr) {
     if (currentIndex == index - 1) {
@@ -140,7 +149,7 @@ int LinkedList::at(int index) {
 
   int currentIndex = 0;
 
-  Node *currentNode = head;
+  LinkedListNode *currentNode = head;
 
   while (currentNode != nullptr) {
     if (currentIndex == index) {
@@ -168,10 +177,10 @@ LinkedList::~LinkedList() {
     return;
   }
 
-  Node *currentNode = head;
+  LinkedListNode *currentNode = head;
 
   while (currentNode != nullptr) {
-    Node *temp = currentNode;
+    LinkedListNode *temp = currentNode;
     currentNode = currentNode->next;
     delete temp;
   }

@@ -1,11 +1,17 @@
 #ifndef LINKED_LIST_H
 #define LINKED_LIST_H
 
-#include "Node.h"
+struct LinkedListNode {
+  int data;
+  LinkedListNode *next;
+  // Constructors
+  LinkedListNode();
+  LinkedListNode(int newData);
+};
 
 class LinkedList {
 private:
-  Node *head;
+  LinkedListNode *head;
 
 public:
   LinkedList();

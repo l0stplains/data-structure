@@ -1,11 +1,17 @@
 #ifndef STACK_H
 #define STACK_H
 
-#include "Node.h"
+struct StackNode {
+  int data;
+  StackNode *before;
+  // Constructors
+  StackNode();
+  StackNode(int newData);
+};
 
 class Stack {
 private:
-  Node *head;
+  StackNode *head;
 
 public:
   Stack();
