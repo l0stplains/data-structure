@@ -3,14 +3,15 @@
 
 #include "Stack.h"
 
-StackNode::StackNode() {
-  data = 0;
-  before = nullptr;
-}
-
+/**
+ * StackNode constructor.
+ *
+ * Sets data to newData and prev pointer to null.
+ * @param newData Data for the node(int).
+ */
 StackNode::StackNode(int newData) {
   data = newData;
-  before = nullptr;
+  prev = nullptr;
 }
 
 /**
@@ -38,7 +39,7 @@ void Stack::push(int data) {
     return;
   }
 
-  newNode->before = head;
+  newNode->prev = head;
 
   head = newNode;
 
@@ -58,7 +59,7 @@ void Stack::pop() {
 
   StackNode *tempNode = head;
 
-  head = head->before;
+  head = head->prev;
 
   delete tempNode;
 
@@ -76,7 +77,7 @@ void Stack::print() {
 
   while (currentNode != nullptr) {
     std::cout << currentNode->data << " ";
-    currentNode = currentNode->before;
+    currentNode = currentNode->prev;
   }
 
   std::cout << std::endl;
@@ -99,7 +100,7 @@ Stack::~Stack() {
 
   while (currentNode != nullptr) {
     StackNode *temp = currentNode;
-    currentNode = currentNode->before;
+    currentNode = currentNode->prev;
     delete temp;
   }
 

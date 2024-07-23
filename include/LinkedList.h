@@ -4,8 +4,8 @@
 struct LinkedListNode {
   int data;
   LinkedListNode *next;
-  // Constructors
-  LinkedListNode();
+
+  /** Constructor */
   LinkedListNode(int newData);
 };
 
@@ -17,15 +17,11 @@ public:
   LinkedList();
 
   void append(int data);
-
   void print();
-
   void deleteAt(int index);
-
   void insertAt(int index, int data);
 
   int at(int index);
-
   int operator[](int index);
 
   ~LinkedList();

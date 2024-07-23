@@ -2,11 +2,12 @@
 #include <iostream>
 #include <stdexcept>
 
-LinkedListNode::LinkedListNode() {
-  data = 0;
-  next = nullptr;
-}
-
+/*
+ * LinkedListNode consturctor.
+ *
+ * Sets data to newData and next pointer to null.
+ * @param newData Data for the node (int).
+ */
 LinkedListNode::LinkedListNode(int newData) {
   data = newData;
   next = nullptr;

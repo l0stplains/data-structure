@@ -4,8 +4,8 @@
 class Test {
 public:
   void linkedList();
-
   void stack();
+  void queue();
 };
 
 #endif

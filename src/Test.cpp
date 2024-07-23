@@ -2,6 +2,7 @@
 #include <stdexcept>
 
 #include "LinkedList.h"
+#include "Queue.h"
 #include "Stack.h"
 #include "Test.h"
 
@@ -87,4 +88,42 @@ void Test::stack() {
   }
 
   return;
+};
+
+void Test::queue() {
+
+  Queue queue;
+
+  std::cout << "Sets queue with 10 node: " << std::endl;
+  for (int i = 0; i < 10; i++) {
+    queue.push(i + 1);
+  }
+  queue.print();
+
+  std::cout << "Push 999 to the queue: " << std::endl;
+  queue.push(999);
+
+  queue.print();
+
+  std::cout << "Pop the queue: " << std::endl;
+  queue.pop();
+
+  queue.print();
+
+  std::cout << "Front element of the queue: " << std::endl;
+  std::cout << queue.front() << std::endl;
+
+  std::cout << "Back elemenet of the queue: " << std::endl;
+  std::cout << queue.back() << std::endl;
+
+  std::cout << "Emptying the queue using while(true) pop: " << std::endl;
+  while (true) {
+    try {
+      queue.pop();
+      queue.print();
+    } catch (std::logic_error &e) {
+      std::cerr << e.what() << std::endl;
+      break;
+    }
+  }
 }

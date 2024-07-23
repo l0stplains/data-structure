@@ -3,9 +3,9 @@
 
 struct StackNode {
   int data;
-  StackNode *before;
-  // Constructors
-  StackNode();
+  StackNode *prev;
+
+  /** Constructor */
   StackNode(int newData);
 };
 
@@ -17,9 +17,7 @@ public:
   Stack();
 
   void push(int data);
-
   void pop();
-
   void print();
 
   int top();

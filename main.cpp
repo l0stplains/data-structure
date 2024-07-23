@@ -13,5 +13,8 @@ int main() {
   // Test stack functionality
   test.stack();
 
+  // Test queue functionality
+  test.queue();
+
   return 0;
 }
